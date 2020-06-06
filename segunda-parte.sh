@@ -12,7 +12,7 @@ end='\e[m'
 seta='\e[32;1m==>\e[m'
 
 clear
-echo -e "${seta} ${blue}Bem vindo a segunda parte da instalação!${end}"
+echo -e "${seta} ${blue}Bem vindo a segunda parte da instalação do Arch Linux!${end}"
 sleep 2s
 clear
 

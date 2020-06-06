@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 # variaveis
-user='fabio'
-root='root'
 pass_user='cp1113bug6u'
 mirror='/etc/pacman.d/mirrorlist'
 blue='\e[34;1m'
@@ -45,10 +43,9 @@ clear
 echo -e "${seta} ${blue}Listando os discos${end}"
 sleep 2s
 lsblk -l | grep disk
-echo ""
 
 # Informando o nome do seu disco
-echo -en "${seta} ${blue}Informe o nome do seu disco:${end} "
+echo -en "\n${seta} ${blue}Informe o nome do seu disco:${end} "
 read disco
 disco=/dev/${disco}
 clear
@@ -60,12 +57,12 @@ read resposta
 clear
 
 if [ "$resposta" -eq 1 ]; then
-    echo -e "${seta} ${blue}Iniciando particionamento na maquina_virtual${end}"
+    echo -e "${seta} ${blue}Iniciando particionamento na maquina virtual${end}"
     sleep 2s
     maquina_virtual
     clear
 elif [ "$resposta" -eq 2 ]; then
-    echo -e "${seta} ${blue}Iniciando particionamento na maquina_real${end}"
+    echo -e "${seta} ${blue}Iniciando particionamento na maquina real${end}"
     sleep 2s
     maquina_real
     clear
@@ -92,7 +89,7 @@ clear
 # Listando partições
 echo -e "${seta} ${blue}Conferindo as partições${end}"
 lsblk ${disco}
-sleep 5s
+sleep 3s
 clear
 
 # Configurando mirrorlist
@@ -109,7 +106,6 @@ clear
 echo -e "${seta} ${blue}Descomentando os servidores Brasileiros${end}"
 sleep 2s
 sed '/Brazil/{n;s/^#//}' ${mirror}.bkp > ${mirror}
-sleep 2s
 clear
 
 # Atualizando os repositórios
@@ -132,8 +128,8 @@ clear
 
 # Copiando o script archinstall-02.sh para /mnt
 echo -e "${seta} ${blue}Copiando o script archinstall-02.sh para /mnt${end}"
-cp segunda-parte.sh /mnt
 sleep 2s
+cp segunda-parte.sh /mnt
 clear
 
 # Iniciando arch-chroot
