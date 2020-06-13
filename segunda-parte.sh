@@ -144,7 +144,7 @@ clear
 
 echo -e "${seta} ${blue}Definindo o layout do teclado no xorg${end}"
 sleep 2s
-cat >> '/etc/X11/xorg.conf.d/10-keyboard.conf' <<   EOF
+cat >> '/etc/X11/xorg.conf.d/10-keyboard.conf' << EOF
 Section "InputClass"
     Identifier "keyboard default"
     MatchIsKeyboard "yes"
