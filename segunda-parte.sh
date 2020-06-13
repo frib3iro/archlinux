@@ -16,15 +16,15 @@ echo -e "${seta} ${blue}Bem vindo a segunda parte da instalação do Arch Linux!
 sleep 2s
 clear
 
-# Criando o arquivo de swap
-echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
-sleep 2s
-fallocate -l 2GB /swapfile
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo /swapfile none swap defaults 0 0 >> /etc/fstab 
-clear
+# # Criando o arquivo de swap
+# echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
+# sleep 2s
+# fallocate -l 2GB /swapfile
+# chmod 600 /swapfile
+# mkswap /swapfile
+# swapon /swapfile
+# echo /swapfile none swap defaults 0 0 >> /etc/fstab 
+# clear
 
 # Ajustando o fuso horário
 echo -e "${seta} ${blue}Ajustando o fuso horário${end}"

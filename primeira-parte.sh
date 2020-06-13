@@ -52,7 +52,7 @@ clear
 
 echo -e "${seta} ${blue}Digite${end} ${red}[ 1 ]${end} ${blue}para maquina maquina virtual${end}${end}"
 echo -e "${seta} ${blue}Digite${end} ${red}[ 2 ]${end} ${blue}para maquina maquina real${end}"
-echo -en "${seta} ${yellow}Digite sua resposta:${end} "
+echo -en "\n${seta} ${yellow}Digite sua resposta:${end} "
 read resposta
 clear
 
