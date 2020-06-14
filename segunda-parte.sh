@@ -16,6 +16,14 @@ echo -e "${seta} ${blue}Bem vindo a segunda parte da instalação do Arch Linux!
 sleep 2s
 clear
 
+# swap
+dd if=/dev/zero of=/var/swap.img bs=1024k count=4000
+mkswap /var/swap.img
+echo "/var/swap.img none swap sw   0  0" >> /etc/fstab
+cat /etc/fstab
+sleep 3s
+clear
+
 # # Criando o arquivo de swap
 # echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
 # sleep 2s
