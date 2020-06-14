@@ -37,27 +37,27 @@ clear
 # sleep 3s
 # clear
 
-# Criando o arquivo de swap 2
-echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
-sleep 2s
-dd if=/dev/$disco of=/swapfile bs=2G count=1
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
-cat /etc/fstab
-sleep 3s
-clear
-
-# # Criando o arquivo de swap 3
+# # Criando o arquivo de swap 2
 # echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
 # sleep 2s
-# fallocate -l 2GB /swapfile
+# dd if=/dev/$disco of=/swapfile bs=2G count=1
 # chmod 600 /swapfile
 # mkswap /swapfile
 # swapon /swapfile
-# echo "/swapfile none swap defaults 0 0" >> /etc/fstab 
+# echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+# cat /etc/fstab
+# sleep 3s
 # clear
+
+# Criando o arquivo de swap 3
+echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
+sleep 2s
+fallocate -l 2GB /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile none swap defaults 0 0" >> /etc/fstab 
+clear
 
 # Ajustando o fuso horário
 echo -e "${seta} ${blue}Ajustando o fuso horário${end}"
