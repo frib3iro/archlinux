@@ -16,28 +16,28 @@ echo -e "${seta} ${blue}Bem vindo a segunda parte da instalação do Arch Linux!
 sleep 2s
 clear
 
-# # Listando os discos
-# echo -e "${seta} ${blue}Listando os discos${end}"
-# sleep 2s
-# lsblk -l | grep disk
-# 
-# # Informando o nome do seu disco
-# echo -en "\n${seta} ${blue}Informe o nome do seu disco:${end} "
-# read resp
-# disco=/dev/${resp}
-# clear
-
 # Criando o arquivo de swap 1
 echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
 sleep 2s
-dd if=/dev/zero of=/var/swap.img bs=1024k count=4000
-mkswap /var/swap.img
-echo "/var/swap.img none swap sw   0  0" >> /etc/fstab
-cat /etc/fstab
-sleep 3s
+dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
+fallocate -l 2GB /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile none swap defaults 0 0" >> /etc/fstab 
 clear
 
 # # Criando o arquivo de swap 2
+# echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
+# sleep 2s
+# dd if=/dev/zero of=/var/swap.img bs=1024k count=4000
+# mkswap /var/swap.img
+# echo "/var/swap.img none swap sw   0  0" >> /etc/fstab
+# cat /etc/fstab
+# sleep 3s
+# clear
+
+# # Criando o arquivo de swap 3
 # echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
 # sleep 2s
 # dd if=/dev/$disco of=/swapfile bs=2G count=1
@@ -49,7 +49,7 @@ clear
 # sleep 3s
 # clear
 
-# # Criando o arquivo de swap 3
+# # Criando o arquivo de swap 4
 # echo -e "${seta} ${blue}Criando o arquivo de swap${end}"
 # sleep 2s
 # fallocate -l 2GB /swapfile
