@@ -19,7 +19,7 @@ clear
 # Criando o arquivo de swap 1
 echo -e "${seta} ${azul}Criando o arquivo de swap${fim}"
 sleep 2s
-dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
+dd if=/dev/zero of=/swapfile bs=1M count=2G status=progress
 fallocate -l 2GB /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
