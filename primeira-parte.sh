@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # variaveis
-pass_user='cp1113bug6u'
+pass_user='123'
 mirror='/etc/pacman.d/mirrorlist'
 azul='\e[34;1m'
 verde='\e[32;1m'
@@ -11,12 +11,12 @@ fim='\e[m'
 seta='\e[32;1m==>\e[m'
 
 # Funções ---------------------------------------------
-# Para a maquina maquina_virtual
+# Para a maquina_virtual
 maquina_virtual(){
     (echo g; echo n; echo ""; echo ""; echo +512M; echo t; echo 1; echo n; echo ""; echo ""; echo ""; echo w) | fdisk ${disco}
 }
 
-# Para a maquina real 
+# Para a máquina real 
 maquina_real(){
     (echo d; echo ""; echo d; echo ""; echo g; echo n; echo ""; echo ""; echo +512M; echo t; echo 1; echo n; echo ""; echo ""; echo ""; echo w) | fdisk ${disco}
 }
@@ -50,19 +50,19 @@ read disco
 disco=/dev/${disco}
 clear
 
-echo -e "${seta} ${azul}Digite${fim} ${vermelho}[ 1 ]${fim} ${azul}para maquina maquina virtual${fim}${fim}"
-echo -e "${seta} ${azul}Digite${fim} ${vermelho}[ 2 ]${fim} ${azul}para maquina maquina real${fim}"
+echo -e "${seta} ${azul}Digite${fim} ${vermelho}[ 1 ]${fim} ${azul}para máquina virtual${fim}${fim}"
+echo -e "${seta} ${azul}Digite${fim} ${vermelho}[ 2 ]${fim} ${azul}para máquina real${fim}"
 echo -en "\n${seta} ${amarelo}Digite sua resposta:${fim} "
 read resposta
 clear
 
 if [ "$resposta" -eq 1 ]; then
-    echo -e "${seta} ${azul}Iniciando particionamento na maquina virtual${fim}"
+    echo -e "${seta} ${azul}Iniciando particionamento na máquina virtual${fim}"
     sleep 2s
     maquina_virtual
     clear
 elif [ "$resposta" -eq 2 ]; then
-    echo -e "${seta} ${azul}Iniciando particionamento na maquina real${fim}"
+    echo -e "${seta} ${azul}Iniciando particionamento na máquina real${fim}"
     sleep 2s
     maquina_real
     clear
@@ -93,19 +93,9 @@ sleep 3s
 clear
 
 # Configurando mirrorlist
-echo -e "${seta} ${azul}Fazfimo backup do mirrorlist${fim}"
+echo -e "${seta} ${azul}Fazendo backup do mirrorlist${fim}"
 sleep 2s
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-clear
-
-echo -e "${seta} ${azul}Comentando todos os servidores${fim}"
-sleep 2s
-sed 's/^Ser/#Ser/' ${mirror} > ${mirror}.bkp
-clear
-
-echo -e "${seta} ${azul}Descomentando os servidores Brasileiros${fim}"
-sleep 2s
-sed '/Brazil/{n;s/^#//}' ${mirror}.bkp > ${mirror}
 clear
 
 # Atualizando os repositórios

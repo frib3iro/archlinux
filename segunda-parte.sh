@@ -2,8 +2,8 @@
 
 # variaveis e password root/user
 user='fabio'
-pass_user='cp1113bug6u'
-pass_root='cp1211rmcc3'
+pass_user='123'
+pass_root='123'
 azul='\e[34;1m'
 verde='\e[32;1m'
 vermelho='\e[31;1m'
@@ -16,7 +16,7 @@ echo -e "${seta} ${azul}Bem vindo a segunda parte da instalação do Arch Linux!
 sleep 2s
 clear
 
-# Criando o arquivo de swap 1
+# Criando o arquivo de swap
 echo -e "${seta} ${azul}Criando o arquivo de swap${fim}"
 sleep 2s
 dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
@@ -45,7 +45,6 @@ sleep 2s
 sed -i 's/en_US ISO-8859-1/#en_US ISO-8859-1/' /etc/locale.gen
 sed -i 's/en_US.UTF-8/#en_US.UTF-8/' /etc/locale.gen
 sed -i 's/#pt_BR.UTF-8/pt_BR.UTF-8/' /etc/locale.gen
-sed -i 's/#pt_BR ISO-8859-1/pt_BR ISO-8859-1/' /etc/locale.gen
 clear
 
 # Gerando locale.gen
