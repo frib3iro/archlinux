@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # variaveis
-pass_user='123'
 mirror='/etc/pacman.d/mirrorlist'
 azul='\e[34;1m'
 verde='\e[32;1m'
@@ -82,8 +81,8 @@ clear
 echo -e "${seta} ${azul}Montando as partições${fim}"
 sleep 2s
 mount ${disco}2 /mnt
-mkdir -p /mnt/boot
-mount ${disco}1 /mnt/boot
+mkdir -p /mnt/boot/efi
+mount ${disco}1 /mnt/boot/efi
 clear
 
 # Listando partições
@@ -96,12 +95,6 @@ clear
 echo -e "${seta} ${azul}Fazendo backup do mirrorlist${fim}"
 sleep 2s
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-clear
-
-# Atualizando os repositórios
-echo -e "${seta} ${azul}Atualizando os repositórios${fim}"
-sleep 2s
-pacman -Syyy --noconfirm
 clear
 
 # Instalando os pacotes base
