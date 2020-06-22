@@ -142,6 +142,7 @@ sleep 2s
 sed -i '/root ALL=(ALL) ALL/a fabio ALL=(ALL) ALL' /etc/sudoers
 clear
 
+# Definindo lauout do teclado para pt-br
 echo -e "${seta} ${azul}Definindo o layout do teclado no xorg${fim}"
 sleep 2s
 cat >> '/etc/X11/xorg.conf.d/10-keyboard.conf' << EOF
