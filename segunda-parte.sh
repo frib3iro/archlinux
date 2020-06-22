@@ -139,7 +139,7 @@ clear
 # Adicionando user no grupo sudoers
 echo -e "${seta} ${azul}Adicionando o usuário no grupo sudoers${fim}"
 sleep 2s
-sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+sed -i '/root ALL=(ALL) ALL/a fabio ALL=(ALL) ALL' /etc/sudoers
 clear
 
 echo -e "${seta} ${azul}Definindo o layout do teclado no xorg${fim}"
