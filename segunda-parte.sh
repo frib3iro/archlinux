@@ -4,12 +4,21 @@
 user='fabio'
 pass_user='123'
 pass_root='123'
-azul='\e[34;1m'
-verde='\e[32;1m'
-vermelho='\e[31;1m'
-amarelo='\e[33;1m'
-fim='\e[m'
-seta='\e[32;1m==>\e[m'
+azul='\033[0;34m'
+verde="\033[0;32m"
+vermelho='\033[0;31m'
+amarelo='\033[0;32m'
+fim='\033[0m'
+seta='\e[32;1m-->\e[m'
+
+arquivo_swap(){
+    dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
+    fallocate -l 2GB /swapfile
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+    echo "/swapfile none swap defaults 0 0" >> /etc/fstab 
+}
 
 clear
 echo -e "${seta} ${azul}Bem vindo a segunda parte da instalação do Arch Linux!${fim}"
@@ -17,15 +26,23 @@ sleep 2s
 clear
 
 # Criando o arquivo de swap
-echo -e "${seta} ${azul}Criando o arquivo de swap${fim}"
-sleep 2s
-dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
-fallocate -l 2GB /swapfile
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile none swap defaults 0 0" >> /etc/fstab 
+echo -e "${seta} ${azul}Criar o arquivo de swap < Ss/Nn >${fim} "
+read resp
 clear
+if [ $resp -eq 'S' || 's' ]; then
+    echo -e "${seta} ${azul}Criando o arquivo de swap${fim}"
+    sleep 2s
+    arquivo_swap
+    clear
+elif [ $resp -eq 'N' || 'n' ]; then
+    echo -e "${seta} ${azul}O sistema será instalado sem o arquivo de swap${fim}"
+    sleep 2s
+    clear
+else
+    echo -e "${seta} ${vermelho}Resposta inválida!${fim}"
+    sleep 2s
+    exit 1
+fi
 
 # Ajustando o fuso horário
 echo -e "${seta} ${azul}Ajustando o fuso horário${fim}"

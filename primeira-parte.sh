@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 
-# variaveis
+# variaveis e password root/user
 mirror='/etc/pacman.d/mirrorlist'
-azul='\e[34;1m'
-verde='\e[32;1m'
-vermelho='\e[31;1m'
-amarelo='\e[33;1m'
-fim='\e[m'
-seta='\e[32;1m==>\e[m'
+azul='\033[0;34m'
+verde="\033[0;32m"
+vermelho='\033[0;31m'
+amarelo='\033[0;32m'
+fim='\033[0m'
+seta='\e[32;1m-->\e[m'
+
+trap '' 2
 
 # Funções ---------------------------------------------
 # Para a maquina_virtual
-maquina_virtual(){
+
+virtual(){
     (echo g; echo n; echo ""; echo ""; echo +512M; echo t; echo 1; echo n; echo ""; echo ""; echo ""; echo w) | fdisk ${disco}
 }
 
 # Para a máquina real 
-maquina_real(){
+real(){
     (echo d; echo ""; echo d; echo ""; echo g; echo n; echo ""; echo ""; echo +512M; echo t; echo 1; echo n; echo ""; echo ""; echo ""; echo w) | fdisk ${disco}
 }
 
@@ -58,12 +61,12 @@ clear
 if [ "$resposta" -eq 1 ]; then
     echo -e "${seta} ${azul}Iniciando particionamento na máquina virtual${fim}"
     sleep 2s
-    maquina_virtual
+    virtual
     clear
 elif [ "$resposta" -eq 2 ]; then
     echo -e "${seta} ${azul}Iniciando particionamento na máquina real${fim}"
     sleep 2s
-    maquina_real
+    real
     clear
 else
     echo -e "${seta} ${vermelho}Resposta inválida!${fim}"
