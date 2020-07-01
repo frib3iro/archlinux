@@ -11,6 +11,7 @@ amarelo='\033[0;32m'
 fim='\033[0m'
 seta='\e[32;1m-->\e[m'
 
+## Funções ------------------------------------------------------
 arquivo_swap(){
     dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
     fallocate -l 2GB /swapfile
@@ -19,6 +20,7 @@ arquivo_swap(){
     swapon /swapfile
     echo "/swapfile none swap defaults 0 0" >> /etc/fstab 
 }
+## Fim funções --------------------------------------------------
 
 clear
 echo -e "${seta} ${azul}Bem vindo a segunda parte da instalação do Arch Linux!${fim}"
@@ -26,23 +28,23 @@ sleep 2s
 clear
 
 # Criando o arquivo de swap
-echo -e "${seta} ${azul}Criar o arquivo de swap < Ss/Nn >${fim} "
-read resp
+echo -e "${seta} ${azul}Criar o arquivo de swap < s/n >${fim} "
+echo -en "\n${seta} ${amr}Qual sua resposta:${fim} "
+read resposta
 clear
-if [ $resp -eq 'S' || 's' ]; then
+if [ "$resposta" = 's' ]; then
     echo -e "${seta} ${azul}Criando o arquivo de swap${fim}"
     sleep 2s
     arquivo_swap
     clear
-elif [ $resp -eq 'N' || 'n' ]; then
+elif [ "$resposta" = 'n' ]; then
     echo -e "${seta} ${azul}O sistema será instalado sem o arquivo de swap${fim}"
     sleep 2s
     clear
 else
     echo -e "${seta} ${vermelho}Resposta inválida!${fim}"
-    sleep 2s
     exit 1
-fi
+fi 
 
 # Ajustando o fuso horário
 echo -e "${seta} ${azul}Ajustando o fuso horário${fim}"
@@ -119,7 +121,7 @@ clear
 # Baixando o Gerenciador de boot 
 echo -e "${seta} ${azul}Baixando o Gerenciador de boot e mais alguns pacotes${fim}"
 sleep 2s
-pacman -S dosfstools efibootmgr git grub linux-headers networkmanager network-manager-applet vim wget xorg --noconfirm
+pacman -S dosfstools efibootmgr git grub linux-headers networkmanager network-manager-applet vim  wget xorg --noconfirm
 clear
 
 # Instalando o grub
