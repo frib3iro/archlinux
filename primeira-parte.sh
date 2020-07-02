@@ -9,8 +9,6 @@ amarelo='\033[0;32m'
 fim='\033[0m'
 seta='\e[32;1m-->\e[m'
 
-trap '' 2
-
 # Funções ---------------------------------------------
 # Para a maquina_virtual
 
