@@ -161,6 +161,14 @@ sleep 2s
 sed -i '/root ALL=(ALL) ALL/a fabio ALL=(ALL) ALL' /etc/sudoers
 clear
 
+# Testar este codigo..............................
+echo -e "${seta} ${azul}Definindo o idioma${fim}"
+sleep 2s
+sed -i 's/#[multilib]/[multilib]/' /etc/pacman.conf
+sed -i '/[multilib]/a Include = /etc/pacman.d/mirrorlist' /etc/pacman.conf
+clear
+#.................................................
+
 # Definindo lauout do teclado para pt-br
 echo -e "${seta} ${azul}Definindo o layout do teclado no xorg${fim}"
 sleep 2s
