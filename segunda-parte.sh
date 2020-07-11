@@ -169,6 +169,12 @@ sed -i '/[multilib]/a Include = /etc/pacman.d/mirrorlist' /etc/pacman.conf
 clear
 #.................................................
 
+# Colorindo a sída do pacman ----------------------------------
+echo -e "${seta} ${azul}Colorindo a saída do pacman${fim}"
+sleep 2s
+sed -i 's/#Color/Color/' /etc/pacman.conf
+clear
+
 # Definindo lauout do teclado para pt-br
 echo -e "${seta} ${azul}Definindo o layout do teclado no xorg${fim}"
 sleep 2s
