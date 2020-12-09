@@ -132,5 +132,5 @@ clear
 # Reiniciando
 echo -e "${seta} ${ciano}Reinicie o sistema para continuar com a terceira parte!${fim}"
 sleep 2s
-exit && ./reinicio
+
 
