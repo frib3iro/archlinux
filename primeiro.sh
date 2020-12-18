@@ -1,95 +1,105 @@
 #!/usr/bin/env bash
-
-## Import das variaveis globais e funções 
+#----------------------------------------------------------------------
+# Script    : primeiro.sh
+# Descrição :
+# Versão    : 1.0
+# Autor     : Fabio Junior Ribeiro
+# Email     : rib3iro@live.com
+# Data      : 28/11/2020
+# Licença   : GNU/GPL v3.0
+#----------------------------------------------------------------------
+# Uso       : ./primeiro.sh
+#----------------------------------------------------------------------
+# Import das variaveis globais e funções 
 source variaveis.sh
 source funcoes.sh
+#----------------------------------------------------------------------
 
 # Tela de boas vindas
 clear
-echo -e "${seta} ${ciano}Bem vindo a instalação do Arch Linux${fim}"
-sleep 2s
+echo -e "${S} ${G}Bem vindo a instalação do Arch Linux no modo UEFI${F}"
+sleep 2
+clear
+
+# Definindo o idioma
+echo -e "${S} ${C}Definindo o idioma${F}"
+sleep 2
+DefinirIdioma
 clear
 
 # Definindo layout do teclado
-echo -e "${seta} ${ciano}Definindo o layout do teclado${fim}"
-sleep 2s
+echo -e "${S} ${C}Definindo o layout do teclado${F}"
+sleep 2
 DefinindoLayoutTeclado
 clear
 
 # Atualizando o relógio do sistema
-echo -e "${seta} ${ciano}Atualizando o relógio do sistema${fim}"
-sleep 2s
+echo -e "${S} ${C}Atualizando o relógio do sistema${F}"
+sleep 2
 AtualizandoRelogioSistema
 clear
 
 # Listando os discos
-echo -e "${seta} ${ciano}Listando os discos${fim}"
+echo -e "${S} ${C}Listando os discos${F}"
 ListandoDiscos
 
 # Informando o nome do seu disco
-echo -en "${seta} ${ciano}Informe o nome do seu disco: ${fim}"; read disco
+echo -en "${S} ${Y}Informe o nome do seu disco: ${F}"
+read disco
 disco=/dev/${disco}
 clear
 
-echo -e "${seta} ${ciano}Digite${fim} ${vermelho}[ 1 ]${fim} ${ciano}para máquina virtual${fim}${fim}"
-echo -e "${seta} ${ciano}Digite${fim} ${vermelho}[ 2 ]${fim} ${ciano}para máquina real${fim}"
-echo -en "\n${seta} ${amarelo}Digite sua resposta:${fim} "
-read resposta
-clear
-
-if [ "$resposta" -eq 1 ]; then
-    echo -e "${seta} ${ciano}Iniciando particionamento na máquina virtual${fim}"
-    sleep 2s
-    MaquinaVirtual
-    clear
-elif [ "$resposta" -eq 2 ]; then
-    echo -e "${seta} ${ciano}Iniciando particionamento na máquina real${fim}"
-    sleep 2s
-    MaquinaReal
-    clear
-else
-    echo -e "${seta} ${vermelho}Resposta inválida!${fim}"
-    exit 1
-fi
+echo -e "${S} ${C}Digite${F} ${Y}[ 1 ]${F} ${C}para instalar na máquina real${F}"
+echo -e "${S} ${C}Digite${F} ${Y}[ 2 ]${F} ${C}para instalar na máquina virtual${F}"
+echo
+echo -en "${S} ${Y}Digite a opção desejada: ${F}"
+read opcao
+case $opcao in
+    1) echo -e "${S} ${Y}O sistema será instalado na maquina virtual${F}"
+        MaquinaReal ;;
+    2) echo -e "${S} ${Y}O sistema será instalado na maquina real${F}"
+        MaquinaVirtual ;;
+    *) echo "${S} ${R}Resposta inválida!${F}"; exit 0 ;;
+esac
 
 # Formatando partições
-echo -e "${seta} ${ciano}Formatando as partições${fim}"
-sleep 2s
+echo -e "${S} ${C}Formatando as partições${F}"
+sleep 2
 FormatandoParticoes
 clear
 
 # Montando partições
-echo -e "${seta} ${ciano}Montando as partições${fim}"
-sleep 2s
+echo -e "${S} ${C}Montando as partições${F}"
+sleep 2
 MontandoParticoes
 clear
 
 # Listando partições
-echo -e "${seta} ${ciano}Conferindo as partições${fim}"
+echo -e "${S} ${C}Conferindo as partições${F}"
 ConferindoParticoes
 sleep 3s
 clear
 
 # Instalando os pacotes base
-echo -e "${seta} ${ciano}Instalando os pacotes base${fim}"
-sleep 2s
+echo -e "${S} ${C}Instalando os pacotes base${F}"
+sleep 2
 InstalandoPacotesBase
 clear
 
 # Gerando o fstab
-echo -e "${seta} ${ciano}Gerando o fstab${fim}"
-sleep 2s
+echo -e "${S} ${C}Gerando o fstab${F}"
+sleep 2
 GerandoFstab
 clear
 
 # Copiando o scripts para /mnt
-echo -e "${seta} ${ciano}Copiando o scripts para /mnt${fim}"
-sleep 2s
+echo -e "${S} ${C}Copiando os scripts para /mnt${F}"
+sleep 2
 CopiandoScripts
 clear
 
 # Iniciando arch-chroot
-echo -e "${seta} ${ciano}Iniciando arch-chroot${fim}"
-sleep 2s
+echo -e "${S} ${C}Iniciando arch-chroot${F}"
+sleep 2
 IniciandoArchChroot
 

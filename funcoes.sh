@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
-
-## Funções ------------------------------------------------------
+#----------------------------------------------------------------------
+# Script    : funcoes.sh
+# Descrição :
+# Versão    : 1.0
+# Autor     : Fabio Junior Ribeiro
+# Email     : rib3iro@live.com
+# Data      : 28/11/2020
+# Licença   : GNU/GPL v3.0
+#----------------------------------------------------------------------
+# Uso       : ./primeiro.sh
+#----------------------------------------------------------------------
 
 # Para a maquina_virtual
 MaquinaVirtual(){
@@ -20,6 +29,7 @@ ArquivoSwap(){
     echo "/swapfile none swap defaults 0 0" >> /etc/fstab
 }
 
+# Mudando a fonte do terminal
 FonteTerminal(){
     setfont ter-132n
 }
