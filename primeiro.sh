@@ -44,6 +44,7 @@ echo -e "${S} ${C}Listando os discos${F}"
 ListandoDiscos
 
 # Informando o nome do seu disco
+echo
 echo -en "${S} ${Y}Informe o nome do seu disco: ${F}"
 read disco
 disco=/dev/${disco}

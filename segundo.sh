@@ -21,7 +21,7 @@ sleep 2
 clear
 
 # Criando o arquivo de swap
-echo -e "${S} ${C}Criar o arquivo de swap [ s/n ]${F} "
+echo -e "${S} ${C}Criar o arquivo de swap < s/n >${F} "
 echo -en "\n${S} ${Y}Qual sua resposta: ${F} "
 read resposta
 clear
