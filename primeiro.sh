@@ -17,7 +17,7 @@ source funcoes.sh
 
 # Tela de boas vindas
 clear
-echo -e "${S} ${G}Bem vindo a instalação do Arch Linux no modo UEFI${F}"
+echo -e "${S} ${C}Bem vindo a instalação do Arch Linux no modo UEFI${F}"
 sleep 2
 clear
 
@@ -56,11 +56,11 @@ echo -en "${S} ${Y}Digite a opção desejada: ${F}"
 read opcao
 case $opcao in
     1) clear
-        echo -e "${S} ${C}O sistema será instalado na maquina virtual${F}"
+        echo -e "${S} ${C}O sistema será instalado na maquina real${F}"
         MaquinaReal
         ;;
     2) clear
-        echo -e "${S} ${C}O sistema será instalado na maquina real${F}"
+        echo -e "${S} ${C}O sistema será instalado na maquina virtual${F}"
         MaquinaVirtual
         ;;
     *) clear
