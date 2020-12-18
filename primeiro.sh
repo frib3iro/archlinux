@@ -55,11 +55,18 @@ echo
 echo -en "${S} ${Y}Digite a opção desejada: ${F}"
 read opcao
 case $opcao in
-    1) echo -e "${S} ${Y}O sistema será instalado na maquina virtual${F}"
-        MaquinaReal ;;
-    2) echo -e "${S} ${Y}O sistema será instalado na maquina real${F}"
-        MaquinaVirtual ;;
-    *) echo "${S} ${R}Resposta inválida!${F}"; exit 0 ;;
+    1) clear
+        echo -e "${S} ${C}O sistema será instalado na maquina virtual${F}"
+        MaquinaReal
+        ;;
+    2) clear
+        echo -e "${S} ${C}O sistema será instalado na maquina real${F}"
+        MaquinaVirtual
+        ;;
+    *) clear
+        echo "${S} ${R}Resposta inválida!${F}"
+        exit 0
+        ;;
 esac
 
 # Formatando partições
