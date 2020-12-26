@@ -197,6 +197,16 @@ Option "XkbVariant" "abnt2"
 fimSection
 EOF
 
+# Fstab
+echo -e "${S} ${C}Configurando o fstab${F}"
+sleep 2
+cat >> '/etc/fstab' << EOF
+
+# /dev/sdb
+UUID=993afbfc-3c0b-4d0f-8e20-172663d19085   /mnt    ext4    defaults    0 1
+EOF
+clear
+
 # Reiniciando
 echo
 echo -e "${S} ${R}Instalação finalizada!${F}"
