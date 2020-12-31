@@ -27,7 +27,7 @@ S='\e[32;1m>>>\e[m'
 #----------------------------------------------------------------------
 # Funções
 arquivo_swap(){
-    dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
+    dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
     chmod 600 /swapfile
     mkswap /swapfile
     swapon /swapfile
@@ -40,8 +40,7 @@ sleep 2
 
 # Criando o arquivo de swap
 echo
-echo -e "${S} ${C}Criar o arquivo de swap < s/n >${F}"
-echo -en "\n${S} ${Y}Qual sua resposta: ${F}"
+echo -en "${S} ${C}Criar o arquivo de swap [ s/n ]:${F} "
 read resposta
 
 if [ "$resposta" = 's' ]
@@ -51,8 +50,8 @@ then
     sleep 2
     arquivo_swap
 elif [ "$resposta" = 'n' ]
-    echo
 then
+    echo
     echo -e "${S} ${C}O sistema será instalado sem o arquivo de swap${F}"
     sleep 2
 else
@@ -139,7 +138,7 @@ echo "root:$pass_root" | chpasswd
 echo
 echo -e "${S} ${C}Baixando o Gerenciador de boot e mais alguns pacotes${F}"
 sleep 2
-pacman -S dialog dosfstools efibootmgr git grub linux-headers mtools networkmanager network-manager-applet vim wget xorg --noconfirm
+pacman -S dialog dosfstools efibootmgr git grub linux-headers mtools networkmanager network-manager-applet terminus-font vim wget xorg --noconfirm
 
 # Instalando o grub
 echo
@@ -197,19 +196,8 @@ Option "XkbVariant" "abnt2"
 fimSection
 EOF
 
-# Fstab
-echo -e "${S} ${C}Configurando o fstab${F}"
-sleep 2
-cat >> '/etc/fstab' << EOF
-
-# /dev/sdb
-UUID=993afbfc-3c0b-4d0f-8e20-172663d19085   /mnt    ext4    defaults    0 1
-EOF
-clear
-
 # Reiniciando
 echo
 echo -e "${S} ${R}Instalação finalizada!${F}"
-sleep 2
 exit
 

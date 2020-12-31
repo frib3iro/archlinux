@@ -51,13 +51,14 @@ lsblk -l | grep disk
 
 # Informando o nome do seu disco
 echo
-echo -en "\n${S} ${C}Informe o nome do seu disco:${F} "
+echo -en "${S} ${C}Informe o nome do seu disco:${F} "
 read disco
 disco=/dev/${disco}
-
-echo -e "${S} ${C}Digite${F} ${R}[ 1 ]${F} ${C}para máquina virtual${F}"
-echo -e "${S} ${C}Digite${F} ${R}[ 2 ]${F} ${C}para máquina real${F}"
-echo -en "\n${S} ${Y}Digite sua resposta:${F} "
+echo
+echo -e "${S} ${C}Digite${F} ${R}[ 1 ]${F} ${C}para iinstalar o sistema na máquina virtual${F}"
+echo -e "${S} ${C}Digite${F} ${R}[ 2 ]${F} ${C}para instalar o sistema na máquina real${F}"
+echo
+echo -en "${S} ${Y}Digite sua resposta:${F} "
 read resposta
 
 if [ "$resposta" -eq 1 ]
