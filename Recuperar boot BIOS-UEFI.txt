@@ -1,24 +1,26 @@
-use o cd de instalação do arch
+- Use o cd de instalação do arch
 
-veja as partições
-lsblk -f /dev/sda
+- veja as partições
+lsblk -f /dev/disco
 
-monte os pontos de montagens
+- monte os pontos de montagens
 
 mount /dev/sda2 /mnt
 mount /dev/sda3 /mnt/home
 mount /dev/sda1 /mnt/boot
 
-entre no chroot
+mount /dev/disco /mnt
+mkdir -p /mnt/boot/efi
+mount /dev/disco /mnt/boot/efi
 
+- entre no chroot
 arch-chroot /mnt
 
-reinstale o grub
-por exemplo
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+- reinstale o grub
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 
 - Atualize o arquivo grub.cfg.
 grub-mkconfig -o /boot/grub/grub.cfg
 
-Desmonte os pontos de montagem e reinicie o sistema.
+- Desmonte os pontos de montagem e reinicie o sistema.
 umount -R /mnt
