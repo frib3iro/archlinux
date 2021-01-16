@@ -53,7 +53,6 @@ echo -en "${S} ${C}Informe o nome do seu disco:${F} "
 read disco
 disco=/dev/${disco}
 
-
 # UEFI com GPT
 # Ponto de montagem	Partição	Tipo de partição	Tamanho sugerido
 # /mnt/boot ou /mnt/efi	/dev/partição_de_sistema_efi	Partição de sistema EFI	Pelo menos 260 MiB
