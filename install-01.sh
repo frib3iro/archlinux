@@ -37,7 +37,7 @@ export LANG=pt_BR.UTF-8
 
 # Atualizar o relógio do sistema
 echo
-echo -e "${S}Atualizar o relógio do sistema${F}"
+echo -e "${S} ${C}Atualizar o relógio do sistema${F}"
 sleep 1
 timedatectl set-ntp true
 
