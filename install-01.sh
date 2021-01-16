@@ -27,9 +27,17 @@ clear
 echo -e "${S} ${C}Bem vindo a primeira parte da instalação do Arch Linux no modo UEFI${F}"
 sleep 1
 
-# Atualizando o relógio do sistema
+# Definir o idioma do ambiente live
 echo
-echo -e "${S} ${C}Atualizando o relógio do sistema${F}"
+echo -e "${S} ${C}Definir o idioma do ambiente live${F}"
+sleep 1
+sed -i 's/#pt_BR.UTF-8/pt_BR.UTF-8/' /etc/locale.gen
+locale-gen
+export LANG=pt_BR.UTF-8
+
+# Atualizar o relógio do sistema
+echo
+echo -e "${S}Atualizar o relógio do sistema${F}"
 sleep 1
 timedatectl set-ntp true
 
@@ -44,6 +52,13 @@ echo
 echo -en "${S} ${C}Informe o nome do seu disco:${F} "
 read disco
 disco=/dev/${disco}
+
+
+# UEFI com GPT
+# Ponto de montagem	Partição	Tipo de partição	Tamanho sugerido
+# /mnt/boot ou /mnt/efi	/dev/partição_de_sistema_efi	Partição de sistema EFI	Pelo menos 260 MiB
+# [SWAP]	/dev/partição_swap	Linux swap	Mais que 512 MiB
+# /mnt	/dev/partição_raiz	Linux x86-64 root (/)	Restante do dispositivo
 
 echo
 echo -e "${S} ${C}Iniciando particionamento do disco${F}"
@@ -75,11 +90,11 @@ lsblk ${disco}
 echo
 echo -e "${S} ${C}Instalando os pacotes base${F}"
 sleep 1
-pacstrap /mnt base base-devel linux linux-firmware intel-ucode
+pacstrap /mnt base base-devel linux linux-firmware
 
-# Gerando o fstab
+# Gerando o arquivo fstab
 echo
-echo -e "${S} ${C}Gerando o fstab${F}"
+echo -e "${S} ${C}Gerando o arquivo fstab${F}"
 sleep 1
 genfstab -U /mnt >> /mnt/etc/fstab
 

@@ -25,40 +25,9 @@ F='\033[0m'
 # Seta utilizada no inicio das frases
 S='\e[32;1m[+]\e[m'
 #----------------------------------------------------------------------
-# Funções
-arquivo_swap(){
-    dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
-    chmod 600 /swapfile
-    mkswap /swapfile
-    swapon /swapfile
-    echo "/swapfile none swap defaults 0 0" >> /etc/fstab
-}
-
 clear
 echo -e "${S} ${C}Bem vindo a segunda parte da instalação do Arch Linux no modo UEFI${F}"
 sleep 1
-
-# Criando o arquivo de swap
-echo
-echo -en "${S} ${C}Criar o arquivo de swap [ s/n ]:${F} "
-read resposta
-
-if [ "$resposta" = 's' ]
-then
-    echo
-    echo -e "${S} ${C}Criando o arquivo de swap${F}"
-    sleep 1
-    arquivo_swap
-elif [ "$resposta" = 'n' ]
-then
-    echo
-    echo -e "${S} ${C}O sistema será instalado sem o arquivo de swap${F}"
-    sleep 1
-else
-    echo
-    echo -e "${S} ${R}Resposta inválida!${F}"
-    exit 1
-fi
 
 # Ajustando o fuso horário
 echo
@@ -70,21 +39,13 @@ ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 echo
 echo -e "${S} ${C}Executando o hwclock${F}"
 sleep 1
-hwclock --systohc --utc
+hwclock --systohc
 
 # Definindo o idioma
 echo
 echo -e "${S} ${C}Definindo o idioma${F}"
 sleep 1
-sed -i 's/en_US ISO-8859-1/#en_US ISO-8859-1/' /etc/locale.gen
-sed -i 's/en_US.UTF-8/#en_US.UTF-8/' /etc/locale.gen
 sed -i 's/#pt_BR.UTF-8/pt_BR.UTF-8/' /etc/locale.gen
-sed -i 's/#pt_BR ISO-8859-1/pt_BR ISO-8859-1/' /etc/locale.gen
-
-# Gerando locale.gen
-echo
-echo -e "${S} ${C}Gerando o locale-gen${F}"
-sleep 1
 locale-gen
 
 # Criando o arquivo locale.conf
@@ -128,6 +89,12 @@ cat >> '/etc/hosts' << EOF
 127.0.1.1   archlinux.localdomain archlinux
 EOF
 
+# Initramfs
+echo
+echo -e "${S} ${C}Criaando um novo initramfs${F}"
+sleep 1
+mkinitcpio -P
+
 # Criando senha de root
 echo
 echo -e "${S} ${C}Criando a senha do root${F}"
@@ -138,7 +105,7 @@ echo "root:$pass_root" | chpasswd
 echo
 echo -e "${S} ${C}Baixando o Gerenciador de boot e mais alguns pacotes${F}"
 sleep 1
-pacman -S dialog dosfstools efibootmgr git grub linux-headers mtools networkmanager network-manager-applet terminus-font vim wget xorg --noconfirm
+pacman -S dialog dosfstools efibootmgr git grub linux-headers mtools networkmanager network-manager-applet terminus-font vim wget xorg intel-ucode --noconfirm
 
 # Instalando o grub
 echo
