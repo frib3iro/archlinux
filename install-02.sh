@@ -11,78 +11,63 @@
 # Uso       : ./install-01.sh
 #----------------------------------------------------------------------
 # variaveis 
-# Password root/user
 user='fabio'
 pass_user='123'
 pass_root='123'
-# Cores usadas no script
 R='\033[0;31m'
 G='\033[0;32m'
 Y='\033[0;33m'
 C='\033[0;36m'
-# Fechamento das cores no script
 F='\033[0m'
-# Seta utilizada no inicio das frases
 S='\e[32;1m[+]\e[m'
 #----------------------------------------------------------------------
 clear
-echo -e "${S} ${C}Bem vindo a segunda parte da instalação do Arch Linux no modo UEFI${F}"
-sleep 1
+echo -e "${S} ${C}Bem vindo a segunda parte da instalação do Arch Linux UEFI${F}"
 
 # Ajustando o fuso horário
 echo
 echo -e "${S} ${C}Ajustando o fuso horário${F}"
-sleep 1
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 # Executando hwclock
 echo
 echo -e "${S} ${C}Executando o hwclock${F}"
-sleep 1
 hwclock --systohc
 
 # Definindo o idioma
 echo
 echo -e "${S} ${C}Definindo o idioma${F}"
-sleep 1
 sed -i 's/#pt_BR.UTF-8/pt_BR.UTF-8/' /etc/locale.gen
 locale-gen
 
 # Criando o arquivo locale.conf
 echo
 echo -e "${S} ${C}Criando o arquivo locale.conf${F}"
-sleep 1
 echo LANG=pt_BR.UTF-8 > /etc/locale.conf
 
 # Exportando a variável LANG
 echo
 echo -e "${S} ${C}Exportando a variável LANG${F}"
-sleep 1
 export LANG=pt_BR.UTF-8
 
 # Atualizando o relógio do sistema
 echo
 echo -e "${S} ${C}Atualizando o relógio do sistema${F}"
-sleep 1
 timedatectl set-ntp true
 
 # Criando o arquivo vconsole.conf
 echo
 echo -e "${S} ${C}Criando o arquivo vconsole.conf${F}"
-sleep 1
 echo KEYMAP=br-abnt2 > /etc/vconsole.conf
-echo FONT=ter-122n >> /etc/vconsole.conf
 
 # Criando o hostname
 echo
 echo -e "${S} ${C}Criando o hostname${F}"
-sleep 1
 echo archlinux > /etc/hostname
 
 # Configurando o hosts
 echo
 echo -e "${S} ${C}Configurando o arquivo hosts${F}"
-sleep 1
 cat >> '/etc/hosts' << EOF
 127.0.0.1   localhost.localdomain localhost
 ::1         localhost.localdomain localhost
@@ -92,68 +77,57 @@ EOF
 # Initramfs
 echo
 echo -e "${S} ${C}Criaando um novo initramfs${F}"
-sleep 1
 mkinitcpio -P
 
 # Criando senha de root
 echo
 echo -e "${S} ${C}Criando a senha do root${F}"
-sleep 1
 echo "root:$pass_root" | chpasswd
 
 # Baixando o Gerenciador de boot
 echo
 echo -e "${S} ${C}Baixando o Gerenciador de boot e mais alguns pacotes${F}"
-sleep 1
 pacman -S dialog dosfstools efibootmgr git grub linux-headers mtools networkmanager network-manager-applet terminus-font vim wget xorg intel-ucode --noconfirm
 
 # Instalando o grub
 echo
 echo -e "${S} ${C}Instalando o grub${F}"
-sleep 1
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 
 # Configurando o grub
 echo
 echo -e "${S} ${C}Configurando o grub${F}"
-sleep 1
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Iniciando o NetworkManager
 echo
 echo -e "${S} ${C}Iniciando os Serviços NetworkManager${F}"
-sleep 1
 systemctl enable NetworkManager
 systemctl start NetworkManager
 
 # Adicionando um usuario
 echo
 echo -e "${S} ${C}Adicionando o usuário${F}"
-sleep 1
 useradd -m -g users -G wheel fabio
 
 # Criando senha de usuario
 echo
 echo -e "${S} ${C}Adicionando a senha do usuário${F}"
-sleep 1
 echo "$user:$pass_user" | chpasswd
 
 # Adicionando user no grupo sudoers
 echo
 echo -e "${S} ${C}Adicionando o usuário no grupo sudoers${F}"
-sleep 1
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 # Colorindo a sída do pacman
 echo
 echo -e "${S} ${C}Colorindo a saída do pacman${F}"
-sleep 1
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
 # Definindo lauout do teclado para pt-br
 echo
 echo -e "${S} ${C}Definindo o layout do teclado no xorg${F}"
-sleep 1
 cat >> '/etc/X11/xorg.conf.d/10-keyboard.conf' << EOF
 Section "InputClass"
 Identifier "keyboard default"
