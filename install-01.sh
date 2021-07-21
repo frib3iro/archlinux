@@ -23,6 +23,11 @@ S='\e[32;1m[+]\e[m'
 clear
 echo -e "${S} ${C}Bem vindo a primeira parte da instalação do Arch Linux UEFI${F}"
 
+# Definir a fonte do ambiente live
+echo
+echo -e "${S} ${C}Definir a fonte do ambiente live${F}"
+setfont ter-122n
+
 # Definir o idioma do ambiente live
 echo
 echo -e "${S} ${C}Definir o idioma do ambiente live${F}"
