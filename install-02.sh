@@ -11,9 +11,6 @@
 # Uso       : Instala automático após instalar o script ./install-01.sh
 #----------------------------------------------------------------------
 # variaveis 
-user='fabio'
-pass_user='123'
-pass_root='123'
 R='\033[0;31m'
 G='\033[0;32m'
 Y='\033[0;33m'
@@ -85,8 +82,9 @@ echo
 echo -e "${S} ${C}Criando a senha do root...${F}"
 echo
 echo -e "${S} ${C}Digite uma senha para o root...${F}"
-read senharoot
-echo "root:$senharoot" | chpasswd
+read -s passroot
+chpasswd <<< "root:passroot" 
+#echo "root:$senharoot" | chpasswd
 
 # Baixando o Gerenciador de boot
 echo
@@ -111,20 +109,22 @@ systemctl start NetworkManager
 
 # Adicionando um usuario
 echo
-echo -e "${S} ${C}Adicionando o usuário...${F}"
-useradd -m -g users -G wheel fabio
+echo -e "${S} ${C}Adicionando um usuário...${F}"
+echo
+echo -e "${S} ${C}Digite o nome do usuário...${F}"
+read usuario
+useradd -m -g users -G wheel $usuario
 
 # Criando senha de usuario
 echo
-echo -e "${S} ${C}Adicionando a senha do $USER...${F}"
-echo
-echo -e "${S} ${C}Digite uma senha para o $USER...${F}"
-read senhausuario
-echo "root:$senhausuario" | chpasswd
+echo -e "${S} ${C}Digite uma senha para o usuário $usuario...${F}"
+read -s passuser
+chpasswd <<< "$usuario:passuser" 
+#echo "root:$senhausuario" | chpasswd
 
 # Adicionando user no grupo sudoers
 echo
-echo -e "${S} ${C}Adicionando o $USER no grupo sudoers...${F}"
+echo -e "${S} ${C}Adicionando o $usuario no grupo sudoers...${F}"
 sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 # Colorindo a sída do pacman
