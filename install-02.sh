@@ -17,7 +17,50 @@ Y='\033[0;33m'
 C='\033[0;36m'
 F='\033[0m'
 S='\e[32;1m[+]\e[m'
+
+# Funções --------------------------------------------------------
+# Adicionando a senha de root
+senharoot(){
+    echo -e "${S} ${C}Digite uma senha para o root...${F}"
+    read -s passroot1
+    echo -e "${S} ${C}Repita a senha...${F}"
+    read -s passroot2
+    if [ $passroot1 -eq $passroot2 ]
+    then
+        echo "root:$passroot1" | chpasswd
+    else
+        clear
+        echo -e "${S} ${R}As senhas nao correspondem!${F}"
+        senharoot
+    fi
+}
+
+# Adicionando um usuario
+usuario(){
+    echo -e "${S} ${C}Adicionando um usuário...${F}"
+    echo
+    echo -e "${S} ${C}Digite o nome do usuário...${F}"
+    read usuario
+    useradd -m -g users -G wheel $usuario
+}
+
+# Criando a senha de usuario
+senhauser(){
+    echo -e "${S} ${C}Digite uma senha para o $usuario...${F}"
+    read -s passuser1
+    echo -e "${S} ${C}Repita a senha...${F}"
+    read -s passuser2
+    if [ $passuser1 -eq $passuser2 ]
+    then
+        echo "$usuario:$passuser1" | chpasswd
+    else
+        clear
+        echo -e "${S} ${R}As senhas nao correspondem!${F}"
+        senhauser
+    fi                                                                                                                              
+}
 #----------------------------------------------------------------------
+
 clear
 echo -e "${S} ${C}Bem vindo a segunda parte da instalação do Arch Linux UEFI...${F}"
 sleep 3s
@@ -81,10 +124,7 @@ mkinitcpio -P
 echo
 echo -e "${S} ${C}Criando a senha do root...${F}"
 echo
-echo -e "${S} ${C}Digite uma senha para o root...${F}"
-read -s passroot
-chpasswd <<< "root:passroot" 
-#echo "root:$senharoot" | chpasswd
+senharoot
 
 # Baixando o Gerenciador de boot
 echo
@@ -107,20 +147,12 @@ echo -e "${S} ${C}Iniciando os Serviços NetworkManager...${F}"
 systemctl enable NetworkManager
 systemctl start NetworkManager
 
-# Adicionando um usuario
+# Criando usuario e senha
 echo
-echo -e "${S} ${C}Adicionando um usuário...${F}"
+echo -e "${S} ${C}Criando usuário e senha...${F}"
 echo
-echo -e "${S} ${C}Digite o nome do usuário...${F}"
-read usuario
-useradd -m -g users -G wheel $usuario
-
-# Criando senha de usuario
-echo
-echo -e "${S} ${C}Digite uma senha para o usuário $usuario...${F}"
-read -s passuser
-chpasswd <<< "$usuario:passuser" 
-#echo "root:$senhausuario" | chpasswd
+usuario
+senhauser
 
 # Adicionando user no grupo sudoers
 echo
