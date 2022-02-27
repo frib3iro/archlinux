@@ -25,7 +25,7 @@ senharoot(){
     read -s passroot1
     echo -e "${S} ${C}Repita a senha...${F}"
     read -s passroot2
-    if [ $passroot1 -eq $passroot2 ]
+    if [[ $passroot1 -eq $passroot2 ]]
     then
         echo "root:$passroot1" | chpasswd
     else
@@ -50,7 +50,7 @@ senhauser(){
     read -s passuser1
     echo -e "${S} ${C}Repita a senha...${F}"
     read -s passuser2
-    if [ $passuser1 -eq $passuser2 ]
+    if [[ $passuser1 -eq $passuser2 ]]
     then
         echo "$usuario:$passuser1" | chpasswd
     else
