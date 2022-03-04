@@ -100,7 +100,7 @@ timedatectl set-ntp true
 echo
 echo -e "${S} ${C}Criando o arquivo vconsole.conf${F}"
 echo KEYMAP=br-abnt2 > /etc/vconsole.conf
-echo FONT=ter-c20b >> /etc/vconsole.conf
+echo FONT=ter-120n >> /etc/vconsole.conf
 
 # Criando o hostname
 echo

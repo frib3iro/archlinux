@@ -26,7 +26,7 @@ echo -e "${S} ${C}Bem vindo a primeira parte da instalação do Arch Linux UEFI/
 # Definir a fonte do ambiente live
 echo
 echo -e "${S} ${C}Definir a fonte do ambiente live${F}"
-setfont ter-c20b
+setfont ter-120n
 
 # Definir o idioma do ambiente live
 echo
