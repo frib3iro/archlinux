@@ -39,7 +39,7 @@ senharoot(){
 usuario(){
     echo -en "${S} ${C}Adicionando um usuário${F}"
     echo
-    echo -en "${S} ${C}Digite o nome do usuário: ${F}"
+    echo -en "${S} ${C}Digite um nome para o usuário: ${F}"
     read usuario
     useradd -m -g users -G wheel $usuario
 }
