@@ -23,7 +23,7 @@ S='\e[32;1m[+]\e[m'
 senharoot(){
     echo -en "${S} ${C}Digite uma senha para o root: ${F}"
     read -s passroot1; echo
-    echo -e "${S} ${C}Repita a senha: ${F}"
+    echo -en "${S} ${C}Repita a senha: ${F}"
     read -s passroot2; echo
     if [[ $passroot1 -eq $passroot2 ]]
     then
@@ -39,7 +39,7 @@ senharoot(){
 usuario(){
     echo -en "${S} ${C}Adicionando um usuário${F}"
     echo
-    echo -e "${S} ${C}Digite o nome do usuário: ${F}"
+    echo -en "${S} ${C}Digite o nome do usuário: ${F}"
     read usuario
     useradd -m -g users -G wheel $usuario
 }
@@ -57,7 +57,7 @@ senhauser(){
         clear
         echo -e "${S} ${R}As senhas nao correspondem!${F}"
         senhauser
-    fi                                                                                                                              
+    fi   
 }
 #----------------------------------------------------------------------
 
