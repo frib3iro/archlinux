@@ -65,6 +65,11 @@ clear
 echo -e "${S} ${C}Bem vindo a segunda parte da instalação do Arch Linux UEFI${F}"
 sleep 3s
 
+echo
+echo -e "${S} ${C}Fazendo backup do mirrirlist e executando o reflector${F}"
+cp /etc/pacman.d/mirrorlist  /etc/pacman.d/mirrorlist.old
+reflector -c Brazil -a 10 -p https -p http --sort rate --save /etc/pacman.d/mirrorlist
+
 # Ajustando o fuso horário
 echo
 echo -e "${S} ${C}Ajustando o fuso horário${F}"
