@@ -28,11 +28,6 @@ echo
 echo -e "${S} ${C}Definir a fonte do ambiente live${F}"
 setfont ter-120n
 
-echo
-echo -e "${S} ${C}Fazendo backup do mirrirlist e executando o reflector${F}"
-cp /etc/pacman.d/mirrorlist  /etc/pacman.d/mirrorlist.old
-reflector -c Brazil -a 10 -p https -p http --sort rate --save /etc/pacman.d/mirrorlist
-
 # Definir o idioma do ambiente live
 echo
 echo -e "${S} ${C}Definir o idioma do ambiente live${F}"
