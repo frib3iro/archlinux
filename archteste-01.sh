@@ -28,11 +28,6 @@ echo
 echo -e "${S} ${C}Definir a fonte do ambiente live${F}"
 setfont ter-120n
 
-echo
-echo -e "${S} ${C}Fazendo backup do mirrirlist e executando o reflector${F}"
-cp /etc/pacman.d/mirrorlist  /etc/pacman.d/mirrorlist.old
-reflector -c Brazil -a 10 -p https -p http --sort rate --save /etc/pacman.d/mirrorlist
-
 # Definir o idioma do ambiente live
 echo
 echo -e "${S} ${C}Definir o idioma do ambiente live${F}"
@@ -77,7 +72,7 @@ mount ${disco}1 /mnt/boot/efi
 echo
 echo -e "${S} ${C}Conferindo as partições${F}"
 lsblk ${disco}
-echo -e "${S} ${C}Aperte enter para continuar${F}"
+echo -e "${S} ${Y}Aperte enter para continuar${F}"
 read
 
 # Instalando os pacotes base

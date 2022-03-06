@@ -65,11 +65,6 @@ clear
 echo -e "${S} ${C}Bem vindo a segunda parte da instalação do Arch Linux UEFI${F}"
 sleep 3s
 
-echo
-echo -e "${S} ${C}Fazendo backup do mirrirlist e executando o reflector${F}"
-cp /etc/pacman.d/mirrorlist  /etc/pacman.d/mirrorlist.old
-reflector -c Brazil -a 10 -p https -p http --sort rate --save /etc/pacman.d/mirrorlist
-
 # Ajustando o fuso horário
 echo
 echo -e "${S} ${C}Ajustando o fuso horário${F}"
@@ -170,21 +165,8 @@ echo
 echo -e "${S} ${C}Colorindo a saída do pacman${F}"
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
-echo
 echo -e "${S} ${C}Baixando o drive de vídeo${F}"
-pacman -S xf86-video-qxl xorg --noconfirm
-
-# Definindo lauout do teclado para pt-br
-# echo
-# echo -e "${S} ${C}Definindo o layout do teclado no xorg${F}"
-# cat >> '/etc/X11/xorg.conf.d/10-keyboard.conf' << EOF
-# Section "InputClass"
-# Identifier "keyboard default"
-# MatchIsKeyboard "yes"
-# Option "XkbLayout" "br"
-# Option "XkbVariant" "abnt2"
-# fimSection
-# EOF
+pacman -S xf86-video-qxl --noconfirm
 
 # Reiniciando
 echo
