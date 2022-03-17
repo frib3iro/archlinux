@@ -127,6 +127,11 @@ echo
 echo -e "${S} ${C}Iniciando o xdg-update...${F}"
 xdg-user-dirs-update
 
+# Definindo lauout do teclado para pt-br
+echo
+echo -e "${S} ${C}Definindo o layout do teclado no xorg${F}"
+teclado
+
 # Reiniciando
 echo
 echo -e "${S} ${R}Instalação finalizada!${F}"
