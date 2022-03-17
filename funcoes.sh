@@ -38,4 +38,18 @@ senhauser(){
         echo -e "${S} ${R}As senhas nao correspondem!${F}"
         senhauser
     fi   
+
+# Definindo lauout do teclado para pt-br
+teclado(){
+	echo
+	echo -e "${S} ${C}Definindo o layout do teclado no xorg${F}"
+	cat >> '/etc/X11/xorg.conf.d/10-keyboard.conf' << EOF
+	Section "InputClass"
+	Identifier "keyboard default"
+	MatchIsKeyboard "yes"
+	Option "XkbLayout" "br"
+	Option "XkbVariant" "abnt2"
+	fimSection
+	EOF
 }
+
