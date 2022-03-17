@@ -85,7 +85,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # Copiando o script archinstall-02.sh para /mnt
 echo
 echo -e "${S} ${B}Copiando o script install-02.sh para /mnt${F}"
-cp install-02.sh variaveis.sh funcoes.sh /mnt
+cp install-01.sh install-02.sh gnome.sh variaveis.sh funcoes.sh /mnt
 
 # Iniciando arch-chroot
 echo
