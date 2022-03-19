@@ -98,6 +98,23 @@ echo
 echo -e "${S} ${B}Configurando o grub${F}"
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# xdg-user-dirs
+echo
+echo -e "${S} ${B}Iniciando o xdg-update...${F}"
+xdg-user-dirs-update
+
+# Mudando o layout do teclado no xorg                                           
+echo
+echo -e "${S} ${B}Definindo o layout do teclado no xorg${F}"
+cat >> '/etc/X11/xorg.conf.d/10-keyboard.conf' << EOF 
+Section "InputClass"
+Identifier "keyboard default"
+MatchIsKeyboard "yes"
+Option "XkbLayout" "br"
+Option "XkbVariant" "abnt2"
+fimSection
+EOF
+
 # Iniciando o NetworkManager
 echo
 echo -e "${S} ${B}Iniciando os Serviços NetworkManager${F}"
@@ -122,18 +139,13 @@ echo
 echo -e "${S} ${B}Colorindo a saída do pacman${F}"
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
-# xdg-user-dirs
-echo
-echo -e "${S} ${C}Iniciando o xdg-update...${F}"
-xdg-user-dirs-update
-
-# Definindo lauout do teclado para pt-br
-echo
-echo -e "${S} ${C}Definindo o layout do teclado no xorg${F}"
-teclado
-
-# Reiniciando
+# Instalação finalizada
 echo
 echo -e "${S} ${R}Instalação finalizada!${F}"
 exit
 
+# Desmontando as partições
+echo
+echo -e "${S} ${B}Digite${F} ${R}\"umount -a\"${F} ${B}para desmonatar as partições!${F}"
+echo -e "${S} ${B}Digite${F} ${R}\"reboot\"${F} ${B}para reiniciar!${F}"
+exit
