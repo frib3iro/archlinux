@@ -139,6 +139,9 @@ Option "XkbVariant" "abnt2"
 fimSection
 EOF
 
+# Instalando o openssh
+installssh
+
 # Instalação finalizada
 echo
 echo -e "${S} ${R}Instalação finalizada!${F}"

@@ -71,9 +71,6 @@ do
     echo
 done
 
-# Instalando o openssh                             
-installssh
-
 # Bluez
 echo
 echo -e "${S} ${B}Iniciando o bluez...${F}"

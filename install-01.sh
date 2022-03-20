@@ -40,7 +40,7 @@ timedatectl set-ntp true
 # Listando os discos
 echo
 echo -e "${S} ${B}Listando os discos${F}"
-lsblk -l
+lsblk -l | grep disk
 
 # Informando o nome do seu disco
 echo
@@ -85,10 +85,10 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # Copiando o script archinstall-02.sh para /mnt
 echo
 echo -e "${S} ${B}Movendo o diretório${F} ${R}archlinux${F} ${B}para /mnt${F}"
-mv archlinux /mnt
+mv *.sh /mnt
 
 # Iniciando arch-chroot
 echo
 echo -e "${S} ${B}Iniciando arch-chroot${F}"
-arch-chroot /mnt && cd archlinux && ./install-02.sh
+arch-chroot /mnt && ./install-02.sh
 
