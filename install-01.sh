@@ -84,11 +84,11 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # Copiando o script archinstall-02.sh para /mnt
 echo
-echo -e "${S} ${B}Movendo o diretório${F} ${R}archlinux${F} ${B}para /mnt${F}"
+echo -e "${S} ${B}Copiando os de instalação scripts para /mnt${F}"
 mv *.sh /mnt
 
 # Iniciando arch-chroot
 echo
 echo -e "${S} ${B}Iniciando arch-chroot${F}"
-arch-chroot /mnt && ./install-02.sh
+arch-chroot /mnt ./install-02.sh
 
