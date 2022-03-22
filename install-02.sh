@@ -109,7 +109,6 @@ echo
 echo -e "${S} ${B}Criando usuário e senha${F}"
 echo
 usuario
-echo
 senhauser
 
 # Adicionando user no grupo sudoers
@@ -139,16 +138,7 @@ Option "XkbVariant" "abnt2"
 fimSection
 EOF
 
-# Instalando o openssh
-installssh
-
 # Instalação finalizada
 echo
 echo -e "${S} ${R}Instalação finalizada!${F}"
-exit
-
-# Desmontando as partições
-echo
-echo -e "${S} ${B}Digite${F} ${R}\"umount -a\"${F} ${B}para desmonatar as partições!${F}"
-echo -e "${S} ${B}Digite${F} ${R}\"reboot\"${F} ${B}para reiniciar!${F}"
 exit
