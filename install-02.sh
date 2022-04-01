@@ -131,11 +131,11 @@ echo
 echo -e "${S} ${B}Definindo o layout do teclado no xorg${F}"
 cat >> '/etc/X11/xorg.conf.d/10-keyboard.conf' << EOF
 Section "InputClass"
-Identifier "keyboard default"
-MatchIsKeyboard "yes"
-Option "XkbLayout" "br"
-Option "XkbVariant" "abnt2"
-fimSection
+    Identifier "keyboard default"                                               
+    MatchIsKeyboard "yes"
+    Option "XkbLayout" "br"
+    Option "XkbVariant" "abnt2"
+EndSection
 EOF
 
 # Instalação finalizada
