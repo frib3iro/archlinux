@@ -18,11 +18,11 @@ source funcoes.sh
 
 clear
 # Tela de boas vindas
-echo -e "${S} ${C}Bem vindo a instalação do gnome${F}"
+echo -e "${S} ${B}Bem vindo a instalação do gnome${F}"
 
 # Atualizando os espelhos
 echo
-echo -e "${S} ${C}Atualizando...${F}"
+echo -e "${S} ${B}Atualizando...${F}"
 sudo pacman -Syu --noconfirm
 
 # Lista de pacotes para instalar com o pacman
@@ -35,20 +35,20 @@ listayay=(aic94xx-firmware ant-dracula-theme-git cava chrome-gnome-shell consola
 listagnome=(baobab cheese docs eog evince file-roller gdm gnome gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-color-manager gnome-control-center gnome-disk-utility gnome-documents gnome-font-viewer gnome-getting-started-docs gnome-keyring gnome-logs gnome-menus gnome-photos gnome-remote-desktop gnome-screenshot gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-themes-extra gnome-user gnome-user-share gnome-video-effects gnome-weather grilo-plugins gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb mutter nautilus networkmanager orca rygel session simple-scan sushi totem tracker tracker3 tracker3-miners tracker-miners vino yelp)
 
 echo
-echo -e "${S} ${C}Instalando pacotes com pacman...${F}"
+echo -e "${S} ${B}Instalando pacotes com pacman...${F}"
 for i in ${listapacman[@]}
 do
-    echo -e "${S} ${C}Instalando o pacote $i ${F}"
+    echo -e "${S} ${B}Instalando o pacote $i ${F}"
     sudo pacman -S $i --noconfirm
     echo -e "${S} ${G}Pacote $i instalado com sucesso!!${F}"
     echo
 done
 
 echo
-echo -e "${S} ${C}Instalando pacotes do gnome...${F}"
+echo -e "${S} ${B}Instalando pacotes do gnome...${F}"
 for i in ${listagnome[@]}
 do
-    echo -e "${S} ${C}Instalando o pacote $i ${F}"
+    echo -e "${S} ${B}Instalando o pacote $i ${F}"
     sudo pacman -S $i --noconfirm
     echo -e "${S} ${G}Pacote $i instalado com sucesso!!${F}"
     echo
@@ -56,16 +56,16 @@ done
 
 # Instalando o yay
 echo
-echo -e "${S} ${C}Instalando o yay......${F}"
+echo -e "${S} ${B}Instalando o yay......${F}"
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 
 echo
-echo -e "${S} ${C}Instalando pacotes com yay...${F}"
+echo -e "${S} ${B}Instalando pacotes com yay...${F}"
 for i in ${listayay[@]}
 do
-    echo -e "${S} ${C}Instalando o pacote $i ${F}"
+    echo -e "${S} ${B}Instalando o pacote $i ${F}"
     yay -S $i --noconfirm
     echo -e "${S} ${G}Pacote $i instalado com sucesso!!${F}"
     echo
@@ -73,14 +73,14 @@ done
 
 # Bluez
 echo
-echo -e "${S} ${C}Iniciando o bluez...${F}"
+echo -e "${S} ${B}Iniciando o bluez...${F}"
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 sudo systemctl enable org.cups.cupsd
 
 # Gnome Display Manager
 echo
-echo -e "${S} ${C}Instalando o Gnome Display Manager...${F}"
+echo -e "${S} ${B}Instalando o Gnome Display Manager...${F}"
 sudo systemctl enable gdm.service
 sudo systemctl start gdm.service
 
