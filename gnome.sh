@@ -26,13 +26,13 @@ echo -e "${S} ${B}Atualizando...${F}"
 sudo pacman -Syu --noconfirm
 
 # Lista de pacotes para instalar com o pacman
-listapacman=(aircrack-ng wifite tcpdump bully reaver hcxdumptool hcxtools termshark cowpatty hashcat fdupes firefox firefox-i18n-pt-br arc-gtk-theme alsa-utils dconf-editor gnome-passwordsafe gnome-sound-recorder archlinux-keyring archlinux-wallpaper bash-completion bluez bluez-utils cmatrix cronie dialog dosfstools efibootmgr git gnome-tweaks gnupg gst-libav gufw htop libreoffice libreoffice-fresh-pt-br lolcat man-db man-pages-pt_br mesa-demos mtools neofetch os-prober pass rsync qbittorrent speedtest-cli ufw unrar xclip youtube-dl pulseaudio pulseaudio-bluetooth lollypop usbutils ttf-fantasque-sans-mono ttf-jetbrains-mono ttf-dejavu ttf-hack ttf-jetbrains-mono gnome-desktop virtualbox)
+listapacman=(aircrack-ng alsa-utils arc-gtk-theme archlinux-keyring archlinux-wallpaper bash-completion bluez bluez-utils bully cmatrix cowpatty cronie cups dconf-editor dialog dosfstools efibootmgr fdupes firefox firefox-i18n-pt-br git gnome-desktop gnome-passwordsafe gnome-sound-recorder gnome-tweaks gnupg gst-libav gufw hashcat hcxdumptool hcxtools htop libreoffice libreoffice-fresh-pt-br lolcat lollypop man-db man-pages-pt_br mesa-demos mtools neofetch os-prober pass pulseaudio pulseaudio-bluetooth qbittorrent reaver rsync speedtest-cli tcpdump termshark ttf-dejavu ttf-fantasque-sans-mono ttf-hack ttf-jetbrains-mono ufw unrar usbutils virtualbox wifite xclip youtube-dl)
 
 # Lista de pacotes para instalar com o yay
-listaparu=(xcursor-breeze pyrit aic94xx-firmware consolas-font wd719x-firmware upd72020x-fw mintstick downgrade timeshift crunch gnome-terminal-transparency cava mint-y-icons sardi-icons ant-dracula-theme-git debtap spotify ttf-ms-fonts ttf-roboto ttf-ubuntu-font-family onedriver)
+listaparu=(aic94xx-firmware ant-dracula-theme-git cava consolas-font crunch debtap downgrade gnome-terminal-transparency mintstick mint-y-icons onedriver pyrit sardi-icons spotify timeshift ttf-ms-fonts ttf-roboto ttf-ubuntu-font-family upd72020x-fw wd719x-firmware xcursor-breeze)
 
 # Instalando pacotes do gnome
-listagnome=(baobab cheese eog evince file-roller gdm gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-color-manager gnome-control-center gnome-disk-utility gnome-documents gnome-font-viewer gnome-getting-started-docs gnome-keyring gnome-logs gnome-menus gnome-photos gnome-remote-desktop gnome-screenshot gnome-session gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-themes-extra gnome-user-docs gnome-user-share gnome-video-effects gnome-weather grilo-plugins gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb mutter nautilus networkmanager orca rygel sushi totem tracker tracker-miners tracker3 tracker3-miners vino yelp simple-scan)
+listagnome=(baobab cheese eog evince file-roller gdm gedit gedit-plugins gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-color-manager gnome-control-center gnome-disk-utility gnome-documents gnome-font-viewer gnome-getting-started-docs gnome-keyring gnome-logs gnome-menus gnome-photos gnome-remote-desktop gnome-screenshot gnome-session gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-themes-extra gnome-user-docs gnome-user-share gnome-video-effects gnome-weather grilo-plugins gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb mutter nautilus networkmanager orca rygel simple-scan sushi totem tracker tracker3 tracker3-miners tracker-miners vino yelp)
 
 echo
 echo -e "${S} ${B}Instalando pacotes com pacman...${F}"
@@ -62,6 +62,9 @@ echo -e "${S} ${B}Instalando o paru...${F}"
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
+echo
+echo -e "${S} ${B}Apagando o diretório paru e go...${F}"
+cd /home/fabio && rm -rf go paru
 
 echo
 echo -e "${S} ${B}Instalando pacotes com paru...${F}"
@@ -74,11 +77,19 @@ do
     echo
 done
 
+echo
+echo -e "${S} ${B}Baixando o tema dracula para o gedit...${F}"
+wget https://raw.githubusercontent.com/dracula/gedit/master/dracula.xml
+mkdir -p $HOME/.local/share/gedit/styles/
+mv dracula.xml $HOME/.local/share/gedit/styles/
+
+
 # Bluez
 echo
-echo -e "${S} ${B}Iniciando o bluez...${F}"
+echo -e "${S} ${B}Iniciando o bluez e o cups...${F}"
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
+sudo systemctl enable cups.service
 
 # Gnome Display Manager
 echo

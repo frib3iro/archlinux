@@ -25,7 +25,7 @@ usuario(){
 
 # Criando a senha de usuario
 senhauser(){
-    echo -en "${S} ${B}Digite uma senha: ${F}"
+    echo -en "${S} ${B}Digite uma senha para o $usuario: ${F}"
     read -s passuser1; echo
     echo -en "${S} ${B}Repita a senha: ${F}"
     read -s passuser2; echo
