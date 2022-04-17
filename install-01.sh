@@ -21,12 +21,6 @@ clear
 echo -e "${S} ${B}Bem vindo a primeira parte da instalação do ArchLinux UEFI/GPT${F}"
 sleep 2s
 
-# Definir a fonte do ambiente live
-echo
-echo -e "${S} ${B}Definir a fonte do ambiente live${F}"
-sleep 2s
-setfont ter-120n
-
 # Definir o idioma do ambiente live
 echo
 echo -e "${S} ${B}Definir o idioma do ambiente live${F}"
