@@ -162,6 +162,6 @@ EOF
 
 # Instalação finalizada
 echo
-echo -e "${S} ${R}Instalação finalizada!${F}"
+echo -e "${S} ${G}Instalação finalizada!${F}"
 sleep 2s
 exit
