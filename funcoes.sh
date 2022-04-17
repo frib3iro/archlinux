@@ -10,7 +10,6 @@ senharoot(){
     then
 	    echo "root:$passroot1" | chpasswd
     else
-        clear
         echo -e "${S} ${R}As senhas nao correspondem!${F}"
         senharoot
     fi
@@ -34,7 +33,6 @@ senhauser(){
     then
 	    echo "$usuario:$passuser1" | chpasswd
     else
-        clear
         echo -e "${S} ${R}As senhas nao correspondem!${F}"
         senhauser
     fi
