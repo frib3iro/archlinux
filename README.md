@@ -1,3 +1,12 @@
 # archlinux2.0
-Revisado ano 2022
+
+# Adicionando ao github
+
+git add .
+
+git commit -m ""
+
+git push -u origin master
+
+git remote set-url origin git@github.com:frib3iro/archlinux.git
 
