@@ -81,8 +81,6 @@ sleep 2s
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
-echo
-
 
 # Instalando pacotes com o paru
 echo
