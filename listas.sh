@@ -1,4 +1,3 @@
-
 # Lista de pacotes para instalar com o pacman
 listapacman=(aircrack-ng alsa-utils arc-gtk-theme archlinux-keyring archlinux-wallpaper bash-completion bluez bluez-utils bully cmatrix cowpatty cronie cups dconf-editor dialog dosfstools efibootmgr fdupes firefox firefox-i18n-pt-br git gnome-desktop gnome-passwordsafe gnome-sound-recorder gnome-tweaks gnupg gst-libav gufw hashcat hcxdumptool hcxtools htop libreoffice libreoffice-fresh-pt-br lolcat lollypop man-db man-pages-pt_br mesa-demos mtools neofetch os-prober pass pulseaudio pulseaudio-bluetooth qbittorrent reaver rsync speedtest-cli tcpdump termshark ttf-dejavu ttf-fantasque-sans-mono ttf-hack ttf-jetbrains-mono ufw unrar usbutils virtualbox wifite xclip youtube-dl)
 
