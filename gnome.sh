@@ -32,12 +32,11 @@ sudo pacman -Syu --noconfirm
 echo
 echo -e "${s} ${b}Instalando pacotes com pacman...${f}"
 sleep 2s
-echo
+
 for i in ${listapacman[@]}
 do
 	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
-    echo
     sleep 2s
     if sudo pacman -S $i --noconfirm; then
         echo -e "${s} ${g}Pacote $i instalado com sucesso!${f}"
@@ -51,13 +50,12 @@ done
 echo
 echo -e "${s} ${b}Instalando pacotes do gnome...${f}"
 sleep 2s
-echo
+
 for i in ${listagnome[@]}
 do
 	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
     sleep 2s
-    echo
     if sudo pacman -S $i --noconfirm; then
         echo -e "${s} ${g}Pacote $i instalado com sucesso!${f}"
         sleep 2s
@@ -79,13 +77,12 @@ makepkg -si --noconfirm
 echo
 echo -e "${s} ${b}Instalando pacotes com paru...${f}"
 sleep 2s
-echo
+
 for i in ${listaparu[@]}
 do
 	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
     sleep 2s
-    echo
     if paru -S $i --noconfirm; then
         echo -e "${s} ${g}Pacote $i instalado com sucesso!${f}"
         sleep 2s
