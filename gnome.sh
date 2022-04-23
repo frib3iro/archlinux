@@ -35,6 +35,7 @@ sleep 2s
 echo
 for i in ${listapacman[@]}
 do
+	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
     echo
     sleep 2s
@@ -53,6 +54,7 @@ sleep 2s
 echo
 for i in ${listagnome[@]}
 do
+	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
     sleep 2s
     echo
@@ -80,6 +82,7 @@ sleep 2s
 echo
 for i in ${listaparu[@]}
 do
+	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
     sleep 2s
     echo
