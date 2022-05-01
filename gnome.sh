@@ -65,25 +65,25 @@ do
     fi
 done
 
-# Instalando o paru
+# Instalando o yay
 echo
-echo -e "${s} ${b}Instalando o paru...${f}"
+echo -e "${s} ${b}Instalando o yay...${f}"
 sleep 2s
-git clone https://aur.archlinux.org/paru.git
-cd paru
+git clone https://aur.archlinux.org/yay.git
+cd yay
 makepkg -si --noconfirm
 
-# Instalando pacotes com o paru
+# Instalando pacotes com o yay
 echo
-echo -e "${s} ${b}Instalando pacotes com paru...${f}"
+echo -e "${s} ${b}Instalando pacotes com yay...${f}"
 sleep 2s
 
-for i in ${listaparu[@]}
+for i in ${listayay[@]}
 do
 	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
     sleep 2s
-    if paru -S $i --noconfirm; then
+    if yay -S $i --noconfirm; then
         echo -e "${s} ${g}Pacote $i instalado com sucesso!${f}"
         sleep 2s
     else
@@ -94,9 +94,9 @@ done
 
 # Apagando diretórios desnecessários
 echo
-echo -e "${s} ${b}Apagando o diretório paru e go...${f}"
+echo -e "${s} ${b}Apagando o diretório yay e go...${f}"
 sleep 2s
-cd /home/fabio && rm -rf go paru
+cd /home/fabio && rm -rf go yay
 
 # Baixando tema dracula para gedit
 echo
