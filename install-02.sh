@@ -89,7 +89,7 @@ senharoot
 echo
 echo -e "${s} ${b}Baixando o grub e mais alguns pacotes...${f}"
 sleep 2s
-pacman -S dialog dosfstools efibootmgr git grub intel-ucode linux-headers mtools networkmanager network-manager-applet nm-connection-editor os-prober pavucontrol pulseaudio terminus-font vim wget xdg-user-dirs xdg-utils xorg --noconfirm
+pacman -S dialog dosfstools efibootmgr git grub intel-ucode linux-headers mtools networkmanager network-manager-applet nm-connection-editor pavucontrol pulseaudio terminus-font vim wget xdg-user-dirs xdg-utils xorg --noconfirm
 
 # Instalando o grub
 echo
@@ -115,8 +115,6 @@ echo
 echo -e "${s} ${b}Criando usuário e senha...${f}"
 echo
 usuario
-echo
-senhauser
 
 # Adicionando user no grupo sudoers
 echo

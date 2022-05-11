@@ -70,7 +70,6 @@ mount ${disco}1 /mnt/boot/efi
 echo
 echo -e "${s} ${b}Conferindo as partições...${f}"
 lsblk ${disco}
-echo
 echo -e "${s} ${y}Aperte enter para continuar...${f}"
 read
 

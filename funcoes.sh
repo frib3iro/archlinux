@@ -15,16 +15,11 @@ senharoot(){
     fi
 }
 
-# Adicionando um usuario
+# Criando a senha de usuario
 usuario(){
     echo -en "${s} ${b}Digite um nome para o usuário: ${f}"
     read -e usuario
     useradd -m -g users -G wheel $usuario
-
-}
-
-# Criando a senha de usuario
-senhauser(){
     echo -en "${s} ${b}Digite uma senha para o $usuario: ${f}"
     read -es passuser1; echo
     echo -en "${s} ${b}Repita a senha: ${f}"
