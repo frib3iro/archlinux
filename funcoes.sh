@@ -2,6 +2,7 @@
 
 # Adicionando a senha de root
 senharoot(){
+    echo -en "${s} ${b}Digite a senha do root: ${f}"
     read -es passroot1; echo
     echo -en "${s} ${b}Repita a senha: ${f}"
     read -es passroot2; echo

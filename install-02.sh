@@ -81,8 +81,6 @@ EOF
 
 # Criando senha de root
 echo
-echo -e "${s} ${b}Digite a senha do root...${f}"
-echo
 senharoot
 
 # Baixando o Gerenciador de boot
