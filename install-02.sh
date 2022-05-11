@@ -79,10 +79,6 @@ cat >> '/etc/hosts' << EOF
 127.0.1.1   $maquina.localdomain $maquina
 EOF
 
-# Criando senha de root
-echo
-senharoot
-
 # Baixando o Gerenciador de boot
 echo
 echo -e "${s} ${b}Baixando o grub e mais alguns pacotes...${f}"
@@ -107,6 +103,10 @@ echo -e "${s} ${b}Iniciando os Serviços NetworkManager...${f}"
 sleep 2s
 systemctl enable NetworkManager
 systemctl start NetworkManager
+
+# Criando senha de root
+echo
+senharoot
 
 # Criando usuario e senha
 echo
