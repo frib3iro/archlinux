@@ -35,21 +35,22 @@ usuario(){
 
 # Instalando o openssh
 installssh(){
-    echo -e "${s} ${b}Instalando o openssh...${f}"
+    echo -e "${s} ${b}Instalando o openssh${f}"
     sleep 2s
     sudo pacman -S openssh --noconfirm
-    clear
-    echo -e "${s} ${b}Abrindo a porta 22...${f}"
-    sleep 2s
-    sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
-    clear
-    echo -e "${s} ${b}Reiniciando o serviço sshd...${f}"
-    sleep 2s
-    systemctl restart sshd
-    clear
-    echo -e "${s} ${b}Mostrando o ip...${f}"
     echo
-    echo -e "${s} ${b}Copie o ip para fazer a conexão entre as máquinas...${f}"
+    echo -e "${s} ${b}Abrindo a porta 22${f}"
+    sleep 2s
+    sudo sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
+    echo
+    echo -e "${s} ${b}Reiniciando o serviço sshd${f}"
+    sleep 2s
+    sudo systemctl restart sshd
+    echo
+    echo -e "${s} ${b}Mostrando o ip${f}"
+    echo
+    echo -e "${s} ${b}Copie o ip para fazer a conexão entre as máquinas${f}"
     ip -br -c a
-    echo -e "${s} ${G}Para se conectar digite${f} ${r}[${f}${b}ssh usuario@IP${f}${r}]${f}"
+    echo
+    echo -e "${s} ${g}Para se conectar digite${f} ${r}[${f}${b}ssh usuario@IP${f}${r}]${f}"
 }
