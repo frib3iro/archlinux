@@ -72,6 +72,7 @@ sleep 2s
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
+cd /home/fabio && rm -rf go yay
 
 # Instalando pacotes com o yay
 echo
@@ -92,12 +93,6 @@ do
     fi
 done
 
-# Apagando diretórios desnecessários
-echo
-echo -e "${s} ${b}Apagando o diretório yay e go...${f}"
-sleep 2s
-cd /home/fabio && rm -rf go yay
-
 # Baixando tema dracula para gedit
 echo
 echo -e "${s} ${b}Baixando o tema dracula para o gedit...${f}"
@@ -107,12 +102,12 @@ mkdir -p $HOME/.local/share/gedit/styles/
 mv dracula.xml $HOME/.local/share/gedit/styles/
 
 # Iniciando o bluez e o cups
-echo
-echo -e "${s} ${b}Iniciando o bluez e o cups...${f}"
-sleep 2s
-sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
-sudo systemctl enable cups.service
+# echo
+# echo -e "${s} ${b}Iniciando o bluez e o cups...${f}"
+# sleep 2s
+# sudo systemctl enable bluetooth
+# sudo systemctl start bluetooth
+# sudo systemctl enable cups.service
 
 # Iniciando o gnome display manager
 echo

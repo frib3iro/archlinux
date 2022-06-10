@@ -111,7 +111,6 @@ senharoot
 # Criando usuario e senha
 echo
 echo -e "${s} ${b}Criando usuário e senha...${f}"
-echo
 usuario
 
 # Adicionando user no grupo sudoers
