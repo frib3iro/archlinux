@@ -109,21 +109,10 @@ sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 sudo systemctl enable cups.service
 
-# Iniciando e habilitando o serviço libvirtd para iniciar na inicialização:
-echo -e "${s} ${b}Iniciando e habilitando o serviço libvirtd para iniciar na inicialização...${f}"
-sleep 2s
-sudo systemctl enable libvirtd.service
-sudo systemctl start libvirtd.service
-sudo systemctl status libvirtd.service
-
-# Adicione sua conta de usuário ao grupo libvirt.
-echo -e "${s} ${b}Adicionando sua conta de usuário ao grupo libvirt...${f}"
-sudo usermod -a -G libvirt $(whoami)
-
-# Reinicie o daemon libvirt.
-echo -e "${s} ${b}Reiniciando o daemon libvirt...${f}"
-sudo systemctl restart libvirtd.service
-
+# Instalando o openssh
+echo -e "${s} ${b}Instalando o openssh${f}"
+installssh
+    
 # Iniciando o gnome display manager
 echo
 echo -e "${s} ${b}Instalando o Gnome Display Manager...${f}"
