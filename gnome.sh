@@ -102,12 +102,12 @@ mkdir -p $HOME/.local/share/gedit/styles/
 mv dracula.xml $HOME/.local/share/gedit/styles/
 
 # Iniciando o bluez e o cups
-# echo
-# echo -e "${s} ${b}Iniciando o bluez e o cups...${f}"
-# sleep 2s
-# sudo systemctl enable bluetooth
-# sudo systemctl start bluetooth
-# sudo systemctl enable cups.service
+echo
+echo -e "${s} ${b}Iniciando o bluez e o cups...${f}"
+sleep 2s
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
+sudo systemctl enable cups.service
 
 # Iniciando e habilitando o serviço libvirtd para iniciar na inicialização:
 echo -e "${s} ${b}Iniciando e habilitando o serviço libvirtd para iniciar na inicialização...${f}"
