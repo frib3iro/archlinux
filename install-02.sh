@@ -83,7 +83,7 @@ EOF
 echo
 echo -e "${s} ${b}Baixando o grub e mais alguns pacotes...${f}"
 sleep 2s
-pacman -S dialog dosfstools efibootmgr git grub intel-ucode linux-headers mtools networkmanager network-manager-applet nm-connection-editor pavucontrol pipewire pipewire-pulse terminus-font vim wget xdg-user-dirs xdg-utils xorg --noconfirm
+pacman -S dialog dosfstools efibootmgr git grub intel-ucode linux-headers mtools networkmanager network-manager-applet nm-connection-editor pipewire pipewire-pulse terminus-font vim wget xdg-user-dirs xdg-utils xorg --noconfirm
 
 # Instalando o grub
 echo
