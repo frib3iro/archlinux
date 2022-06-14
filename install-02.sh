@@ -131,6 +131,12 @@ echo -e "${s} ${b}Iniciando o xdg-update...${f}"
 sleep 2s
 xdg-user-dirs-update
 
+# Criando diretórios
+echo
+echo -e "${s} ${b}Criando diretórios...${f}"
+sleep 2s
+mkdir Arquivos Onedriver
+
 # Mudando o layout do teclado no xorg
 echo
 echo -e "${s} ${b}Definindo o layout do teclado no xorg...${f}"
