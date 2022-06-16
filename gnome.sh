@@ -21,54 +21,54 @@ clear
 
 # Tela de boas vindas
 echo -e "${s} ${b}Bem vindo a instalação do gnome${f}"
-sleep 2s
+
 
 # Atualizando os espelhos
 echo
 echo -e "${s} ${b}Atualizando...${f}"
-sleep 2s
+
 sudo pacman -Syu --noconfirm
 
 echo
 echo -e "${s} ${b}Instalando pacotes com pacman...${f}"
-sleep 2s
+
 
 for i in ${listapacman[@]}
 do
 	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
-    sleep 2s
+    
     if sudo pacman -S $i --noconfirm; then
         echo -e "${s} ${g}Pacote $i instalado com sucesso!${f}"
-        sleep 2s
+        
     else
         echo -e "${s} ${r}Houve erro na instalação do pacote $i!${f}"
-        sleep 2s
+        
     fi
 done
 
 echo
-echo -e "${s} ${b}Instalando pacotes do gnome...${f}"
-sleep 2s
+echo -e "${s} ${b}Instalando pacotes...${f}"
 
-for i in ${listagnome[@]}
+
+for i in ${pacotes[@]}
 do
 	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
-    sleep 2s
+    
     if sudo pacman -S $i --noconfirm; then
         echo -e "${s} ${g}Pacote $i instalado com sucesso!${f}"
-        sleep 2s
+        
     else
         echo -e "${s} ${r}Houve erro na instalação do pacote $i!${f}"
-        sleep 2s
+        
     fi
 done
 
 # Instalando o yay
 echo
 echo -e "${s} ${b}Instalando o yay...${f}"
-sleep 2s
+
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
@@ -77,26 +77,26 @@ cd /home/fabio && rm -rf go yay
 # Instalando pacotes com o yay
 echo
 echo -e "${s} ${b}Instalando pacotes com yay...${f}"
-sleep 2s
+
 
 for i in ${listayay[@]}
 do
 	echo
     echo -e "${s} ${b}Instalando o pacote $i ${f}"
-    sleep 2s
+    
     if yay -S $i --noconfirm; then
         echo -e "${s} ${g}Pacote $i instalado com sucesso!${f}"
-        sleep 2s
+        
     else
         echo -e "${s} ${r}Houve erro na instalação do pacote $i!${f}"
-        sleep 2s
+        
     fi
 done
 
 # Baixando tema dracula para gedit
 echo
 echo -e "${s} ${b}Baixando o tema dracula para o gedit...${f}"
-sleep 2s
+
 wget https://raw.githubusercontent.com/dracula/gedit/master/dracula.xml
 mkdir -p $HOME/.local/share/gedit/styles/
 mv dracula.xml $HOME/.local/share/gedit/styles/
@@ -104,7 +104,7 @@ mv dracula.xml $HOME/.local/share/gedit/styles/
 # Iniciando o bluez e o cups
 echo
 echo -e "${s} ${b}Iniciando o bluez e o cups...${f}"
-sleep 2s
+
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 sudo systemctl enable cups.service
@@ -112,11 +112,3 @@ sudo systemctl enable cups.service
 # Instalando o openssh
 echo -e "${s} ${b}Instalando o openssh${f}"
 installssh
-    
-# Iniciando o gnome display manager
-echo
-echo -e "${s} ${b}Instalando o Gnome Display Manager...${f}"
-sleep 2s
-sudo systemctl enable gdm.service
-sudo systemctl start gdm.service
-

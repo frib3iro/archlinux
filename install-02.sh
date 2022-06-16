@@ -10,13 +10,10 @@
 # --------------------------------------------------------
 # Uso       : Instala automático após instalar o script ./install-01.sh
 # --------------------------------------------------------
-
 source variaveis.sh
 source funcoes.sh
 clear
-
 # --------------------------------------------------------
-
 echo -e "${s} ${b}Bem vindo a segunda parte da instalação do ArchLinux UEFI/GPT${f}"
 sleep 2s
 
