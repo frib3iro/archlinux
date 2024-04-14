@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1584205420 source:c:\users\fabio\source\projetosc\olamundo\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1712342642 source:c:\users\fabio\source\projetosc\olamundo\funcao.c
+
